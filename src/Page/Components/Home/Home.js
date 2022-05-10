@@ -4,6 +4,7 @@ import bg from '../../../assets/images/bg.png';
 import Info from './Info/Info';
 import DentalCare from './DentalCare';
 import AppointmentHome from './AppointmentHome';
+import TestimonialHome from './TestimonialHome';
 
 const Home = () => {
     let img = <img src={bg} alt="" />
@@ -16,6 +17,8 @@ const Home = () => {
             <DentalCare> </DentalCare>
 
             <AppointmentHome> </AppointmentHome>
+
+            <TestimonialHome> </TestimonialHome>
 
         </div>
     );
