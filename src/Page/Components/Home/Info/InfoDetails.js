@@ -41,22 +41,6 @@ const InfoDetails = () => {
                 </div>
             </div>
 
-
-
-
-
-
-
-            {/* <div>
-                <div class="bg-gradient-to-r from-primary to-secondary card lg:card-side shadow-xl p-5">
-                    <figure><img className='' src={fluoride} alt="Album" /></figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Fluoride Treatment</h2>
-                        <p>Click the button to listen on Spotiwhy app.</p>
-                    </div>
-                </div>
-            </div> */}
-
         </div>
     );
 };
