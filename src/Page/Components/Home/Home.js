@@ -1,13 +1,12 @@
 import React from 'react';
 import Banner from './Banner';
-import bg from '../../../assets/images/bg.png';
 import Info from './Info/Info';
 import DentalCare from './DentalCare';
 import AppointmentHome from './AppointmentHome';
 import TestimonialHome from './TestimonialHome';
+import Contact from './Contact';
 
 const Home = () => {
-    let img = <img src={bg} alt="" />
     return (
         <div>
             <Banner> </Banner>
@@ -19,6 +18,8 @@ const Home = () => {
             <AppointmentHome> </AppointmentHome>
 
             <TestimonialHome> </TestimonialHome>
+
+            <Contact> </Contact>
 
         </div>
     );
