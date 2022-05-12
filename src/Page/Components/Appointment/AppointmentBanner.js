@@ -5,9 +5,8 @@ import 'react-day-picker/dist/style.css';
 import chair from '../../../assets/images/chair.png';
 
 
-const AppointmentBanner = () => {
+const AppointmentBanner = ({date, setDate}) => {
 
-    let [date, setDate] = useState(new Date());
 
     return (
         <section>
@@ -20,7 +19,7 @@ const AppointmentBanner = () => {
                             selected={date}
                             onSelect={setDate}
                             />
-                            <p className='text-center font-semibold pt-4'>You picked {format(date, 'PP')}.</p>
+                            
                     </div>
                 </div>
             </div>
