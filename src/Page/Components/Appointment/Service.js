@@ -1,7 +1,7 @@
 import React from 'react';
-import PrimaryBtn from '../../Shared/PrimaryBtn';
 
-const Service = ({service, name, slots }) => {
+
+const Service = ({ service, setBooking, name, slots }) => {
     return (
         <div >
 
@@ -9,7 +9,10 @@ const Service = ({service, name, slots }) => {
                 <p className='text-secondary font-semibold text-xl p-2'> {service.name} </p>
                 <p className='p-1'> 8:00 AM - 9:00 AM </p>
                 <p className='p-1 pb-3'> {service.slots.length} {service.slots.length > 0 ? 'SPACES' : 'SPACE'}  AVAILABLE </p>
-                <PrimaryBtn> Book Appointment </PrimaryBtn>
+    
+                {/* <button onClick={()=> setBooking(service)} disabled={service.slots.length===0} className="btn font-bold text-white bg-gradient-to-r from-primary to-secondary"> Book Appointment </button> */}
+
+                <label for="service-modal" onClick={()=> setBooking(service)} disabled={service.slots.length===0} className="btn font-bold text-white bg-gradient-to-r from-primary to-secondary"> Book Appointment</label>
             </div>
 
         </div>
