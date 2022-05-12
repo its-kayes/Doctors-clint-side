@@ -10,7 +10,7 @@ const ServiceAppointments = ({ date }) => {
 
     useEffect(() => {
 
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(req => req.json())
             .then(data => setServices(data))
 
