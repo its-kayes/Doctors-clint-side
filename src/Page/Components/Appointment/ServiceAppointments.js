@@ -26,7 +26,7 @@ const ServiceAppointments = ({ date }) => {
                 }
             </div>
             {
-                booking && <ServiceModal booking={booking}> </ServiceModal>
+                booking && <ServiceModal booking={booking} date={date} setBooking={setBooking}> </ServiceModal>
             }
         </div>
     );
