@@ -38,7 +38,7 @@ const Navbar = () => {
                         <li><CustomLink to='/about'> About </CustomLink></li>
                         <li><CustomLink to='/appointment'> Appointment </CustomLink></li>
                         <li><CustomLink to='/reviews'> Reviews </CustomLink></li>
-                        <li><CustomLink to='/contact'> Contact US </CustomLink></li>
+                        <li><CustomLink to='/contact'> Contact Us </CustomLink></li>
                         <li><CustomLink to='/login'> Login </CustomLink></li>
                         {/* <li tabIndex="0">
                             <a>
