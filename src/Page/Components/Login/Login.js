@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Error from '../../Shared/Error';
 import Loading from '../../Shared/Loading';
@@ -53,7 +54,7 @@ const Login = () => {
 
                         <input type='submit' value='Login' class="mt-2 btn btn-dark w-full max-w-sm" /> 
                     </form>
-                    <p className='text-sm text-center'>New to Doctors Portal? <a href="" className='text-primary'> Create New Account </a></p>
+                    <p className='text-sm text-center'>New to Doctors Portal? <Link to='/register' className='text-primary'> Create New Account </Link></p>
 
                     <div class="divider">OR</div>
 
