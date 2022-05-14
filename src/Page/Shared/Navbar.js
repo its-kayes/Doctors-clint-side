@@ -3,6 +3,7 @@ import CustomLink from '../CustomLink/CustomLink';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { Link } from 'react-router-dom';
  
 
 
@@ -51,7 +52,8 @@ const Navbar = () => {
                             <li><a>Item 3</a></li> */}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+                    {/* <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a> */}
+                    <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
