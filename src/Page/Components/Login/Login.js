@@ -1,7 +1,6 @@
-import { async } from '@firebase/util';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Error from '../../Shared/Error';
 import Loading from '../../Shared/Loading';
@@ -20,13 +19,15 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending, rError] = useSendPasswordResetEmail(auth);
+    let navigate = useNavigate();
 
     let getEmail = event => {
         setEmail(event.target.value);
     }
 
-    if (gUser) {
-        console.log(gUser);
+    if (gUser || user) {
+        console.log(gUser || user);
+        navigate('/appointment');
     }
 
     if (loading || gLoading) {

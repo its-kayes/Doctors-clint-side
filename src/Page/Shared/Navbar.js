@@ -1,7 +1,22 @@
 import React from 'react';
 import CustomLink from '../CustomLink/CustomLink';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
+ 
+
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+
+    let signout = e => {
+        let check = window.confirm(' Are You Sure ?');
+        if (check) {
+            signOut(auth);
+        }
+    }
+
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -16,7 +31,13 @@ const Navbar = () => {
                             <li><CustomLink to='/appointment'> Appointment </CustomLink></li>
                             <li><CustomLink to='/reviews'> Reviews </CustomLink></li>
                             <li><CustomLink to='/contact'> Contact US </CustomLink></li>
-                            <li><CustomLink to='/login'> Login </CustomLink></li>
+                            {
+                                user ? 
+                                <li><button onClick={signout} > Sign Out </button></li>
+                                :
+                                <li><CustomLink to='/login'> Login </CustomLink></li>
+                            }
+                            {/* <li><CustomLink to='/login'> Login </CustomLink></li> */}
                             {/* <li tabIndex="0">
                                 <a className="justify-between">
                                     Parent
@@ -39,7 +60,13 @@ const Navbar = () => {
                         <li><CustomLink to='/appointment'> Appointment </CustomLink></li>
                         <li><CustomLink to='/reviews'> Reviews </CustomLink></li>
                         <li><CustomLink to='/contact'> Contact Us </CustomLink></li>
-                        <li><CustomLink to='/login'> Login </CustomLink></li>
+                        {/* <li><CustomLink to='/login'> Login </CustomLink></li> */}
+                        {
+                                user ? 
+                                <li><button onClick={signout} > Sign Out </button></li>
+                                :
+                                <li><CustomLink to='/login'> Login </CustomLink></li>
+                            }
                         {/* <li tabIndex="0">
                             <a>
                                 Parent
