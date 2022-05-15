@@ -8,13 +8,15 @@ const ServiceAppointments = ({ date }) => {
     let [services, setServices] = useState([])
     let [booking, setBooking] = useState();
 
+    let formattedDate = format(date, 'PP');
+
     useEffect(() => {
 
-        fetch('http://localhost:5000/services')
+        fetch(`http://localhost:5000/available?date=${formattedDate}`)
             .then(req => req.json())
             .then(data => setServices(data))
 
-    }, []);
+    }, [services]);
 
     return (
         <div>
