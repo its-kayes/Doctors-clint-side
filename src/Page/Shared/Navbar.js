@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
- 
+
 
 
 const Navbar = () => {
@@ -33,10 +33,13 @@ const Navbar = () => {
                             <li><CustomLink to='/reviews'> Reviews </CustomLink></li>
                             <li><CustomLink to='/contact'> Contact US </CustomLink></li>
                             {
-                                user ? 
-                                <li><button onClick={signout} > Sign Out </button></li>
-                                :
-                                <li><CustomLink to='/login'> Login </CustomLink></li>
+                                user && <li><CustomLink to='/dashboard'> Dashboard </CustomLink></li>
+                            }
+                            {
+                                user ?
+                                    <li><button onClick={signout} > Sign Out </button></li>
+                                    :
+                                    <li><CustomLink to='/login'> Login </CustomLink></li>
                             }
                             {/* <li><CustomLink to='/login'> Login </CustomLink></li> */}
                             {/* <li tabIndex="0">
@@ -62,13 +65,16 @@ const Navbar = () => {
                         <li><CustomLink to='/appointment'> Appointment </CustomLink></li>
                         <li><CustomLink to='/reviews'> Reviews </CustomLink></li>
                         <li><CustomLink to='/contact'> Contact Us </CustomLink></li>
+                        {
+                            user && <li><CustomLink to='/dashboard'> Dashboard </CustomLink></li>
+                        }
                         {/* <li><CustomLink to='/login'> Login </CustomLink></li> */}
                         {
-                                user ? 
+                            user ?
                                 <li><button onClick={signout} > Sign Out </button></li>
                                 :
                                 <li><CustomLink to='/login'> Login </CustomLink></li>
-                            }
+                        }
                         {/* <li tabIndex="0">
                             <a>
                                 Parent
