@@ -34,7 +34,7 @@ const Login = () => {
     if (token) {
         navigate(from, { replace: true });
         // navigate('/appointment');
-        console.log(token);
+        // console.log(token);
     }
 
     if (loading || gLoading) {

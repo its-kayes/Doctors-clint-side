@@ -3,6 +3,7 @@ import { useNavigation } from 'react-day-picker';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hook/useToken';
 import Error from '../../Shared/Error';
 import Loading from '../../Shared/Loading';
 
@@ -23,8 +24,9 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const [updateProfile, updating] = useUpdateProfile(auth);
+    let [token] = useToken(gUser || user);
 
-    if (gUser || user) {
+    if (token) {
         console.log(gUser || user || updateProfile);
         navigate('/')
     }

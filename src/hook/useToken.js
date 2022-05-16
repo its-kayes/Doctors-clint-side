@@ -18,13 +18,11 @@ let useToken = user => {
                 .then(data =>{
                     console.log(' data inside token', data);
                     let accessToken = data.token;
-                    localSto
+                    localStorage.setItem('accessToken', accessToken );
+                    // console.log(accessToken);
                     setToken(accessToken);
                 } );
         }
-
-        // console.log('user inside token', user);
-        // console.log('user inside token', user?.user?.email);
     }, [user])
     return [token];
 }
