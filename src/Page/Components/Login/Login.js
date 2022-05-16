@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hook/useToken';
 import Error from '../../Shared/Error';
 import Loading from '../../Shared/Loading';
 
@@ -21,7 +22,7 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, rError] = useSendPasswordResetEmail(auth);
     let navigate = useNavigate();
     let location = useLocation();
-
+    let [token] = useToken(gUser || user);
 
 
     let from = location.state?.from?.pathname || "/";
@@ -30,10 +31,10 @@ const Login = () => {
         setEmail(event.target.value);
     }
 
-    if (gUser || user) {
-        console.log(gUser || user);
+    if (token) {
         navigate(from, { replace: true });
         // navigate('/appointment');
+        console.log(token);
     }
 
     if (loading || gLoading) {
