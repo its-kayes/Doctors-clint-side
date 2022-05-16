@@ -1,18 +1,41 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const MyAppointment = () => {
     let [appointments, setAppointments] = useState([]);
-
+    let navigate = useNavigate();
     let [user] = useAuthState(auth)
     console.log(user.email);
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setAppointments(data))
+            fetch(`http://localhost:5000/booking?email=${user.email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => {
+                    if (res.status === 404 || res.status === 401) {
+                        // let errorCode = window.confirm('Invalid Login Token');
+                        // if(errorCode) {
+                        //     signOut(auth);
+                        //     localStorage.removeItem('accessToken');
+                        //     navigate('/')
+                        // }
+                        signOut(auth);
+                        localStorage.removeItem('accessToken');
+                        navigate('/');
+                    }
+                    console.log('res', res);
+                    return res.json()
+                })
+                .then(data => {
+                    setAppointments(data)
+                })
         }
 
     }, [user])
@@ -44,7 +67,7 @@ const MyAppointment = () => {
                                 <td> {appointment.slot} </td>
                                 <td> {appointment.date} </td>
                             </tr>
-                        </tbody> )
+                        </tbody>)
                     }
                 </table>
             </div>

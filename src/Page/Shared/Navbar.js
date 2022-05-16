@@ -15,6 +15,7 @@ const Navbar = () => {
         let check = window.confirm(' Are You Sure ?');
         if (check) {
             signOut(auth);
+            localStorage.removeItem('accessToken');
         }
     }
 
