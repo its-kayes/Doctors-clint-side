@@ -12,7 +12,7 @@ const ServiceAppointments = ({ date }) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/available?date=${formattedDate}`)
+        fetch(`https://murmuring-atoll-87463.herokuapp.com/available?date=${formattedDate}`)
             .then(req => req.json())
             .then(data => setServices(data))
 

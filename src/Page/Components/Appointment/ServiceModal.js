@@ -25,7 +25,7 @@ const ServiceModal = ({ booking, date, setBooking }) => {
             number: event.target.number.value
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://murmuring-atoll-87463.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const ServiceModal = ({ booking, date, setBooking }) => {
                 if (data.success) {
                     toast(`Appointment is set on ${formattedDate} at ${slot}`)
                 }
-                else{
+                else {
                     toast.error(` You already have an appointment on ${bookingDetails?.date} `)
                 }
                 console.log(data);

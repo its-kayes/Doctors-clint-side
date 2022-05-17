@@ -7,21 +7,21 @@ let useToken = user => {
         let email = user?.user?.email;
         let currentUserEmail = { email: email }
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://murmuring-atoll-87463.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
                 },
-                body:JSON.stringify(currentUserEmail)
+                body: JSON.stringify(currentUserEmail)
             })
                 .then(res => res.json())
-                .then(data =>{
+                .then(data => {
                     console.log(' data inside token', data);
                     let accessToken = data.token;
-                    localStorage.setItem('accessToken', accessToken );
+                    localStorage.setItem('accessToken', accessToken);
                     // console.log(accessToken);
                     setToken(accessToken);
-                } );
+                });
         }
     }, [user])
     return [token];

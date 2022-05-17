@@ -7,12 +7,12 @@ const AllUser = () => {
     // let [users, setUsers] = useState();
 
     // useEffect( () => {
-    //     fetch('http://localhost:5000/user')
+    //     fetch('https://murmuring-atoll-87463.herokuapp.com/user')
     //         .then(res => res.json())
     //         .then(data => setUsers(data))
     // }, []);
 
-    let { data: users, isLoading, refetch } = useQuery('user', () => fetch('http://localhost:5000/user', {
+    let { data: users, isLoading, refetch } = useQuery('user', () => fetch('https://murmuring-atoll-87463.herokuapp.com/user', {
         method: 'GET',
         headers: {
             // 'content-type': 'application/json',
@@ -21,14 +21,14 @@ const AllUser = () => {
     }).then(res => res.json()))
 
     let makeAdmin = (email) => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://murmuring-atoll-87463.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
         })
             .then(res => {
-                if(res.status === 403) {
+                if (res.status === 403) {
                     toast.error(" Can't Added as Admin ")
                 }
                 return res.json();
