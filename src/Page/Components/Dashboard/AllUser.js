@@ -27,11 +27,18 @@ const AllUser = () => {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
         })
-            .then(res => res.json())
+            .then(res => {
+                if(res.status === 403) {
+                    toast.error(" Can't Added as Admin ")
+                }
+                return res.json();
+            })
             .then(data => {
                 console.log(data);
-                refetch();
-                toast.success(`Successfully Added as an Admin`);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast.success(`Successfully Added as an Admin`);
+                }
             })
     }
 
