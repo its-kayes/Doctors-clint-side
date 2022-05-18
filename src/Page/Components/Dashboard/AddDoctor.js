@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading';
 
 const AddDoctor = () => {
@@ -20,26 +21,45 @@ const AddDoctor = () => {
         let specialist = event.target.specialist.value;
         // let image = event.target.image.value;
 
-        let data = {
+        let doctorsData = {
             name: name,
             email: email,
             specialist: specialist,
             image: imageUrl
         }
 
+        fetch('http://localhost:5000/doctors', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(doctorsData)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    toast(" Doctor Added ")
+                }
+                else (
+                    toast.error(" Failed to add doctor")
+                )
+                console.log(result)
+            })
+
+
         // console.log(imageUrl);
-        console.log(data);
+        console.log(doctorsData);
         event.target.reset();
     }
-
 
 
     // this code written hy myself 
     let handleImageUpload = image => {
         // console.log(image.target.files[0]);
         const imageData = new FormData();
-        let imgSecterKey = 'c25b9d9e071325c2967df21a4422b129';
-        let url = `https://api.imgbb.com/1/upload?key=${imgSecterKey}`
+        let imgSecretKey = 'c25b9d9e071325c2967df21a4422b129';
+        let url = `https://api.imgbb.com/1/upload?key=${imgSecretKey}`
         imageData.append('image', image.target.files[0]);
 
         fetch(url, {
