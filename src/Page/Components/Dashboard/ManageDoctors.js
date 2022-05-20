@@ -30,9 +30,7 @@ const ManageDoctors = () => {
                 toast.success(' Doctor deleted ')
                 refetch();
             }
-
         })
-
     }
 
     return (

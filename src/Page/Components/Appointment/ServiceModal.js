@@ -7,7 +7,7 @@ import auth from '../../../firebase.init';
 
 const ServiceModal = ({ booking, date, setBooking }) => {
     const [user, loading, error] = useAuthState(auth);
-    let { name, slots, _id } = booking;
+    let { name, slots, _id, cost } = booking;
     // console.dir(booking)
     let modelSubmit = event => {
         event.preventDefault();
@@ -20,6 +20,7 @@ const ServiceModal = ({ booking, date, setBooking }) => {
             service: name,
             date: formattedDate,
             slot: slot,
+            cost: cost,
             patientName: user?.displayName,
             patientEmail: user?.email,
             number: event.target.number.value
